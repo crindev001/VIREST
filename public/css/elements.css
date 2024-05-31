@@ -1,0 +1,44 @@
+h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.establecimiento{
+    display: flex;
+    flex-direction: column;
+}
+.establecimiento img{
+    width: 50%;
+    margin: 0px auto;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating i {
+    color: gold;
+    margin-right: 2px;
+}
+
+.rating .fa-star,
+.rating .fa-star-half-alt,
+.rating .fa-star {
+    color: #FFD700; /* Color dorado para las estrellas */
+}
+
+.rating .fa-star-half-alt {
+    color: #FFD700; /* Color dorado para media estrella */
+}
+
+.rating .fa-star,
+.rating .fa-star-half-alt,
+.rating .far {
+    font-size: 20px; /* Tamaño de las estrellas */
+}
+
+.rating span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555;
+}
