@@ -28,13 +28,6 @@ h4{
     padding: 20px;
 }
 
-.establecimiento{
-    width: 24%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 5px;
-}
 .nav-buttons{
     position: absolute;
     top: 57.5%;
@@ -44,6 +37,7 @@ h4{
     justify-content: space-between;
     width: 100%;
     pointer-events: none; /* This makes sure that clicks pass through */
+    z-index: 15;
 }
 .nav-buttons button{
     pointer-events: all; /* This makes sure that clicks are registered on buttons */
