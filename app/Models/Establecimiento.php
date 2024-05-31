@@ -22,6 +22,11 @@ class Establecimiento extends Model
         return $this->belongsTo(TipoEstablecimiento::class, 'id_tipo_establecimiento');
     }
 
+    public function imgEstablecimientos()
+    {
+        return $this->hasMany(ImgEstablecimiento::class, 'id_establecimiento');
+    }
+
     public function imgEstablecimiento()
     {
         return $this->hasOne(ImgEstablecimiento::class, 'id_establecimiento');
@@ -29,46 +34,35 @@ class Establecimiento extends Model
 
     public function comentarios()
     {
-        return $this->hasMany(ComentarioEstablecimiento::class, 'id_establecimiento', 'id');
+        return $this->hasManyThrough(Comentario::class, ComentarioEstablecimiento::class, 'id_establecimiento', 'id', 'id', 'id_comentario');
     }
 
     public function calcularCalificacionPromedio()
     {
-        $comentarios = $this->comentarios()->with('comentario')->get();
+        $comentarios = $this->comentarios()->with('usuario.persona')->get();
         $totalComentarios = $comentarios->count();
+        $totalCalificacion = $comentarios->sum('calificacion');
+
+        $mejorComentario = $comentarios->sortByDesc('calificacion')->first();
+
+        $mejorComentarioTexto = $mejorComentario ? $mejorComentario->descripcion : null;
+        $mejorComentarioUsuario = $mejorComentario && $mejorComentario->usuario ? $mejorComentario->usuario->persona->nombre : null;
+
         if ($totalComentarios > 0) {
-            $totalCalificacion = $comentarios->sum(function($comentarioEstablecimiento) {
-                return $comentarioEstablecimiento->comentario->calificacion;
-            });
             $calificacionPromedio = $totalCalificacion / $totalComentarios;
-            // Redondear la calificación al múltiplo de 0.5 más cercano entre 1 y 5
-            $calificacionRedondeada = round($calificacionPromedio * 2) / 2;
             return [
-                'promedio' => min(max($calificacionRedondeada, 1), 5), // Asegura que la calificación esté entre 1 y 5
-                'total' => $totalComentarios
+                'promedio' => $calificacionPromedio,
+                'total' => $totalComentarios,
+                'mejor_comentario' => $mejorComentarioTexto,
+                'mejor_comentario_usuario' => $mejorComentarioUsuario
             ];
         } else {
             return [
-                'promedio' => 1, // Retorna 1 si no hay comentarios
-                'total' => 0
+                'promedio' => 0,
+                'total' => 0,
+                'mejor_comentario' => null,
+                'mejor_comentario_usuario' => null
             ];
         }
     }
-
 }
-
-/*
-        $totalComentarios = $this->comentarios->count();
-        if ($totalComentarios > 0) {
-            $totalCalificacion = $this->comentarios->sum('calificacion');
-            $calificacionPromedio = $totalCalificacion / $totalComentarios;
-            // Redondear la calificación al múltiplo de 0.5 más cercano entre 1 y 5
-            $calificacionRedondeada = round($calificacionPromedio * 2) / 2;
-            return min(max($calificacionRedondeada, 1), 5); // Asegura que la calificación esté entre 1 y 5
-        } elseif ($totalComentarios === 1) {
-            // Si hay solo un comentario, podría considerarse la calificación del único comentario
-            return $this->comentarios->first()->calificacion;
-        } else {
-            return null; // Retorna null si no hay comentarios
-        }
-*/

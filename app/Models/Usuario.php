@@ -15,4 +15,14 @@ class Usuario extends Model
         'password',
         'pwd_enc'
     ];
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'id_persona');
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'id_usuario');
+    }
 }

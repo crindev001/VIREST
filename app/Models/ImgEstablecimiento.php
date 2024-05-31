@@ -12,4 +12,9 @@ class ImgEstablecimiento extends Model
         'id_establecimiento',
         'imagen'
     ];
+
+    public function establecimiento()
+    {
+        return $this->belongsTo(Establecimiento::class, 'id_establecimiento');
+    }
 }

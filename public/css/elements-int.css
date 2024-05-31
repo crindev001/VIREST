@@ -1,0 +1,68 @@
+#container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espacio entre elementos */
+    padding: 20px;
+}
+
+.hotel-container {
+    display: flex;
+    width: 80%; /* Ocupa 80% del ancho de la pantalla */
+    min-height: 300px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-left {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.card-left img {
+    max-width: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.card-right {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: -6px;
+}
+
+.card-body .card-text {
+    margin: 10px 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating i {
+    color: #ffd700; /* Color dorado para las estrellas */
+    margin-right: 5px;
+}
+
+.rating span {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #555;
+}

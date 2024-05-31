@@ -16,8 +16,13 @@ class Comentario extends Model
         'fecha'
     ];
 
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario');
+    }
+
     public function establecimientos()
     {
-        return $this->belongsToMany(Establecimiento::class, 'comentario_establecimientos', 'id_comentario', 'id_establecimiento');
+        return $this->hasManyThrough(Establecimiento::class, ComentarioEstablecimiento::class, 'id_comentario', 'id', 'id', 'id_establecimiento');
     }
 }

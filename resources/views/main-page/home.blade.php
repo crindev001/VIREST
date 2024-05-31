@@ -2,39 +2,16 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vi-Rest</title>
-    <link rel="icon" href="{{asset('icons/logo.png')}}">
+    @include('usuarios/styles')
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{asset('css/general.css')}}">
-    <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/elements.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
-    <!-- SEPARAR -->
     <header>
-        <nav class="navbar fixed-top">
-            <div class="container">
-                <div class="logo">
-                    <a href="#"><img src="{{ asset('icons/logo.png') }}" alt="Logo"></a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#">Hoteles</a></li>
-                    <li><a href="#">Restaurantes</a></li>
-                    <li><a href="#">Lugares Turísticos</a></li>
-                    <li><a href="#">Eventos</a></li>
-                    <li><a href="#">Sobre Nosotros</a></li>
-                </ul>
-                <div class="login">
-                    <a href="#"><img src="{{ asset('icons/usuario.png') }}" alt="Usuario"></a>
-                </div>
-            </div>
-        </nav>
+        @include('usuarios/navbar')
     </header>
-    <!-- FIN NAVEGADOR -->
     <div id="container">
         @foreach($tipoEstablecimientos as $tipo)
         <div class="tipo-container">

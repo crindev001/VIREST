@@ -4,3 +4,52 @@
     padding: 0;
     font-family: sans-serif;
 }
+
+body{
+    background-color: beige;
+    display: flex;
+}
+#container{
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h4{
+    font-size: 1.1em;
+    font-weight: normal;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating i {
+    color: gold;
+    margin-right: 2px;
+}
+
+.rating .fa-star,
+.rating .fa-star-half-alt,
+.rating .fa-star {
+    color: #FFD700; /* Color dorado para las estrellas */
+}
+
+.rating .fa-star-half-alt {
+    color: #FFD700; /* Color dorado para media estrella */
+}
+
+.rating .fa-star,
+.rating .fa-star-half-alt,
+.rating .far {
+    font-size: 20px; /* Tamaño de las estrellas */
+}
+
+.rating span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555;
+}

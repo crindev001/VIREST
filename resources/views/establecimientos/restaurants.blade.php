@@ -12,21 +12,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </header>
     <div id="container">
-        @foreach($hoteles as $hotel)
+    @foreach($establecimientos  as $establecimiento)
         <div class="hotel-container">
             <div class="card-left">
-                @foreach($hotel->imgEstablecimientos as $imagen)
+                @foreach($establecimiento->imgEstablecimientos as $imagen)
                     <img src="{{ asset('img/' . $imagen->imagen) }}" alt="Imagen del establecimiento">
                 @endforeach
             </div>
             <div class="card-right">
                 <div class="card-header">
-                    {{ $hotel->nombre }}
+                    {{ $establecimiento->nombre }}
                 </div>
                 <div class="card-body">
-                    <p class="card-text">{{ $hotel->descripcion }}</p>
+                    <p class="card-text">{{ $establecimiento->descripcion }}</p>
                     @php
-                    $calificacionData = $hotel->calcularCalificacionPromedio();
+                    $calificacionData = $establecimiento->calcularCalificacionPromedio();
                     $calificacion = $calificacionData['promedio'];
                     $totalCalificaciones = $calificacionData['total'];
                     $mejorComentario = $calificacionData['mejor_comentario'];

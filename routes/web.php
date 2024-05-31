@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 */
 Route::get('/', [AuthController::class, 'inicio'])->name('inicio');
+Route::get('/Hoteles',[EstablecimientoController::class, 'Hoteles'])->name('Hoteles');
+Route::get('/Restaurants',[EstablecimientoController::class, 'mostrarEstablecimientos'])->name('Establecimientos');
 
 /*
 Route::get('/login', [AuthController::class, 'login'])->name('login');

@@ -14,4 +14,9 @@ class Persona extends Model
         'correo',
         'direccion'
     ];
+
+    public function usuarios()
+    {
+        return $this->hasMany(Usuario::class, 'id_persona');
+    }
 }
